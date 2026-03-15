@@ -42,7 +42,6 @@ namespace Task_3
                         Console.Write($"{ matrix[j, k],4}");
                     Console.WriteLine();
                 }
-
             }
         }
     }
