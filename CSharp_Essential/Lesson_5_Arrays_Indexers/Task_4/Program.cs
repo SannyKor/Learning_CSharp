@@ -10,6 +10,12 @@ Article article3 = new Article("Смартфон", store.StoreName, 10000);
 store.AddArticle(article1);
 store.AddArticle(article2);
 store.AddArticle(article3);
+
+
+
+
+
+Console.WriteLine(new string('-', 20));
 bool exit = false;
 while (!exit)
 {
@@ -17,7 +23,8 @@ while (!exit)
         "\n1. - додати товар." +
         "\n2. - знайти товар за назвою." +
         "\n3. - знайти товар за індексом." +
-        "\n4. - вийти.");
+        "\n4. - знайти товар за назвою з використанням індексатора." +
+        "\n5. - вийти.");
     switch (Console.ReadLine())
     {
         case "1":
@@ -56,9 +63,8 @@ while (!exit)
             }
             try
             {
-                Article foundArticle = store[index];
-                if (foundArticle != null)
-                    foundArticle.DisplayInfo();
+                if (store[index] != null)
+                    store[index].DisplayInfo();
                 else
                     Console.WriteLine("Товар не знайдено за вказаним індексом.");
             }
@@ -67,7 +73,21 @@ while (!exit)
                 Console.WriteLine("Індекс виходить за межі масиву.");
             }
             break;
-        case "4":
+        case "4": // Пошук товару за назвою з використанням індексатора.
+            while (true)
+            {
+                Console.WriteLine("Введіть назву товару для пошуку:");
+                string input = Console.ReadLine();
+                if (store[input] == null)
+                    Console.WriteLine("Товар не знайдено за вказаною назвою.");
+                else
+                    store[input].DisplayInfo();
+                Console.WriteLine("Бажаєте продовжити пошук? (y/n)");
+                if (Console.ReadLine().ToLower() != "y")
+                    break;
+            }
+            break;
+        case "5":
             exit = true;
             break;
         default:

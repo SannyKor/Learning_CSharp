@@ -26,6 +26,20 @@ namespace Task_4
                 articles[index] = value;
             }
         }
+        public Article this[string name]
+        {
+            get
+            {
+                foreach (var article in articles)
+                {
+                    if (article != null && article.Name.ToLower() == name.ToLower())
+                    {
+                        return article;
+                    }
+                }
+                return null;
+            }
+        }
         public bool AddArticle(Article article)
         {
             foreach (var item in articles)
