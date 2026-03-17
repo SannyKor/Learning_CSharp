@@ -4,9 +4,9 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 Console.InputEncoding = System.Text.Encoding.UTF8;
 
 Store store = new Store("SuperStore");
-Article article1 = new Article("Телевізор", store.StoreName, 15000);
-Article article2 = new Article("Ноутбук", store.StoreName, 25000);
-Article article3 = new Article("Смартфон", store.StoreName, 10000);
+Article article1 = new Article("TV", store.StoreName, 15000);
+Article article2 = new Article("Laptop", store.StoreName, 25000);
+Article article3 = new Article("Smartphone", store.StoreName, 10000);
 store.AddArticle(article1);
 store.AddArticle(article2);
 store.AddArticle(article3);
