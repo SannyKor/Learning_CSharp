@@ -1,5 +1,8 @@
 ﻿using Task_2;
 
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+Console.InputEncoding = System.Text.Encoding.UTF8;
+
 Train[] trains = new Train[8];
 
 trains[0] = new Train("Харків", 76, new TimeOnly(10, 0));
