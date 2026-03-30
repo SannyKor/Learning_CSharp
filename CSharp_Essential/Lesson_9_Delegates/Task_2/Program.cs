@@ -1,5 +1,7 @@
 ﻿
 using System.Runtime.CompilerServices;
+using System.Text;
+Console.OutputEncoding = Encoding.Unicode;
 
 while (true)
 {
@@ -32,7 +34,7 @@ while (true)
     }
     Console.WriteLine("Шоб продовжити обрахунок натисніть 'Y' або 'N' щоб вийти.");
     char exit = Console.ReadKey(true).KeyChar;
-    if (Char.ToLower(exit) == 'n')
+    if (Char.ToLower(exit) == 'n'|| Char.ToLower(exit) == 'т')
         break;
     Console.WriteLine();
 }
