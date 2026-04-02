@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task_2
 {
-    internal class MyList <T>
+    public class MyList <T>
     {
         private T[] _array;
         private int _index;

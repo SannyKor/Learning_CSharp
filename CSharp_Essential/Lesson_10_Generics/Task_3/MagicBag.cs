@@ -30,7 +30,7 @@ namespace Task_3
 
             lastGifTime[creature.Name] = DateTime.Now;
             
-            return $"{creature.CreatureType} {creature.Name} отримай {gift}"; ;
+            return $"{creature.CreatureType} {creature.Name} отримує {gift}"; ;
         }
         private string GenerateGift(T creature)
         {

@@ -8,5 +8,7 @@ namespace Task_3
     {
         public string CreatureType { get; }
         public string Name { get; }
+        public Elf (string creatureType, string name)
+        {  CreatureType = creatureType; Name = name;}
     }
 }
