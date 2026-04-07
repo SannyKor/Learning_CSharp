@@ -15,5 +15,9 @@ namespace Task_2
             this.year = year;
             this.model = model;
         }
+        public override string ToString()
+        {
+            return $"Рік випуску: {year}, Модель: {model}";
+        }
     }
 }
