@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <TextBlock x:Name="TimeDisplay" HorizontalAlignment="Left" Margin="275,98,0,0" TextWrapping="Wrap" Text="00:00:00.00" VerticalAlignment="Top" Height="26" Width="261"/>
+        <Button x:Name="Start" Content="Start" HorizontalAlignment="Left" Margin="89,192,0,0" VerticalAlignment="Top" Height="41" Width="112" Click="Button_Click"/>
+        <Button x:Name="Reset" Content="Reset" HorizontalAlignment="Left" Margin="589,0,0,0" VerticalAlignment="Center" Height="41" Width="112" Click="Button_Click_2"/>
+        <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" Margin="350,0,0,0" VerticalAlignment="Center" Height="41" Width="112" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
