@@ -25,7 +25,7 @@ namespace Task_1
                         Console.Clear();
                     }
                     screenHeight = Console.WindowHeight;
-                    positionY = 0;
+                    positionY = Random.Shared.Next(-20, 0);
                 }
                 screenHeight = Console.WindowHeight;
                 if (positionY == 0)
