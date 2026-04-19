@@ -6,6 +6,8 @@ MyList<int> numbers = new MyList<int>();
 numbers.Add(10);
 numbers.Add(20);
 numbers.Add(30);
+numbers.Add(40);
+numbers.Add(50);
 
 Console.WriteLine($"Кількість елементів: {numbers.Count}");
 

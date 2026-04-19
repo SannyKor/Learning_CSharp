@@ -18,7 +18,7 @@ namespace Task_2
         }
         public void Add(T item)
         {
-            if (count <= array.Length)
+            if (count < array.Length)
                 array[count++] = item;
             else
             {
