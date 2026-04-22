@@ -13,16 +13,16 @@ for (int i = 0; i < count; i++)
     Console.WriteLine($"\nПрацівник #{i + 1}:");
 
     Console.Write("Прізвище та ініціали: ");
-    string name = Console.ReadLine();
+    string? name = Console.ReadLine();
 
     Console.Write("Посада: ");
-    string position = Console.ReadLine();
+    string? position = Console.ReadLine();
 
     int year;
     try
     {
         Console.Write("Рік прийняття на роботу: ");
-        string inputYear = Console.ReadLine();
+        string? inputYear = Console.ReadLine();
 
                 
         if (!int.TryParse(inputYear, out year) || inputYear.Length != 4 || year > DateTime.Now.Year)
@@ -39,8 +39,8 @@ for (int i = 0; i < count; i++)
 
     workers[i] = new Worker
     {
-        Name = name,
-        Position = position,
+        Name = name ?? string.Empty,
+        Position = position ?? "Не вказано.",
         YearJoined = year
     };
 }

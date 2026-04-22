@@ -14,10 +14,10 @@ for (int i = 0; i < count; i++)
     Console.WriteLine($"Введіть дані для товару #{i + 1}:");
 
     Console.Write("Назва товару: ");
-    string productName = Console.ReadLine();
+    string? productName = Console.ReadLine();
 
     Console.Write("Назва магазину: ");
-    string shopName = Console.ReadLine();
+    string? shopName = Console.ReadLine();
 
     decimal cost;
     while (true)
@@ -34,8 +34,8 @@ for (int i = 0; i < count; i++)
 
     prices[i] = new Price
     {
-        ProductName = productName,
-        ShopName = shopName,
+        ProductName = productName ?? string.Empty,
+        ShopName = shopName ?? string.Empty,
         Cost = cost
     };
     Console.WriteLine();
@@ -47,14 +47,14 @@ prices = prices.OrderBy(p => p.ShopName).ToArray();
 while (true)
 {
     Console.Write("Введіть назву магазину для пошуку: ");
-    string searchShop = Console.ReadLine();
+    string? searchShop = Console.ReadLine();
 
     try
     {
         List<Price> results = new List<Price>();
         foreach (var pr in prices)
         {
-            if (pr.ShopName.ToLower() == searchShop.ToLower())
+            if (string.Equals(pr.ShopName, searchShop, StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine($"Назва товару: {pr.ProductName}, Вартість: {pr.Cost} грн.");
                 results.Add(pr);
