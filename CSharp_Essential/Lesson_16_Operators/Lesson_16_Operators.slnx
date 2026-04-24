@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="Task_2/Task_2.csproj" />
   <Project Path="Task_3(Clone)/Task_3(Clone).csproj" />
+  <Project Path="Task_4(MyDate)/Task_4(MyDate).csproj" Id="98b4b70f-999b-4307-9f80-04724f939d46" />
+  <Project Path="Task_6(3DPoint)/Task_6(Point3D).csproj" Id="aac0ebb3-0163-48bd-9ea9-e02e7a2af57c" />
 </Solution>
