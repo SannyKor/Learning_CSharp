@@ -1,4 +1,4 @@
-﻿using Task_3;
+﻿using Task_3_MyDictionary;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 MyDictionary<string, string> myDict = new MyDictionary<string, string>();

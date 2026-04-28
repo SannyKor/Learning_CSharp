@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Task_3
+namespace Task_3_MyDictionary
 {
     public class MyDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>
     {

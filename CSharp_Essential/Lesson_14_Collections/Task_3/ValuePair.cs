@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Task_3
+namespace Task_3_MyDictionary
 {
     public class ValuePair<TKey, TValue>
     {
