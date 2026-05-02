@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Task_2/Task_2(myList).csproj" />
+  <Project Path="Task_3/Task_3(myDictionary).csproj" />
+  <Project Path="Task_4(ExtensionGetArray)/Task_4(ExtensionGetArray).csproj" />
+</Solution>
