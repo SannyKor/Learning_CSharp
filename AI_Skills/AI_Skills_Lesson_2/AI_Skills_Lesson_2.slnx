@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Generate_tests/Generate_tests.csproj" />
+  <Project Path="Generate_tests_Test/Generate_tests_Test.csproj" />
+</Solution>
