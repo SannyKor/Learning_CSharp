@@ -15,15 +15,17 @@ namespace Task_2
         public string? Name { get; }
         public Gender Gender {
             get; }
-        List <Person> Children { get; }
+        public List <Person> Children { get; } = new List <Person> ();
         Person? parentMom = null;
         public Person? ParentMom { get { return parentMom; } }   
         Person ? parentDad = null;
         public Person? ParentDad { get { return parentDad; } }
         public Person (Person Mom, Person Dad, string? name, DateTime birthday, Gender gender)
         {
-            this.parentMom = Mom;
-            this.parentDad = Dad;
+            parentMom = Mom;
+            parentMom.Children.Add(this);
+            parentDad = Dad;
+            parentDad.Children.Add(this);
             this.Name = name;
             this.Birthday = birthday;
             this.Gender = gender;
@@ -34,10 +36,12 @@ namespace Task_2
             if (parent.Gender == Gender.Male)
             {
                 parentDad = parent;
+                parentDad.Children.Add(this);
             }
             else
             {
                 parentMom = parent;
+                parentMom.Children.Add(this);
             }
             this.Name = name;
             this.Birthday = birthday;
@@ -68,7 +72,8 @@ namespace Task_2
         }
         public override string ToString()
         {
-            return $"Name: {Name}, Birthday: {Birthday.ToShortDateString()}, Gender: {Gender}";
+            return $"Name: {Name}, Birthday: {Birthday.ToShortDateString()}, Gender: {Gender}" +
+                $"\n\t{ParentDad?.Name}\n\t{ParentMom?.Name}";
         }
     }
 }

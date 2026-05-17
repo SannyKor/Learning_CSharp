@@ -8,19 +8,32 @@ namespace Task_2
 {
     public class FamilyTree : ICollection<Person>
     {
-        Person? RootMale { get; }
-        Person? RootFemale { get;  }
+        Person? RootMom { get; }
+        Person? RootDad { get;  }
         private List<Person> familyMembers = new List<Person>();
 
         public int Count => familyMembers.Count;
 
         public bool IsReadOnly => false;
-        public FamilyTree(Person male, Person female)
+        public FamilyTree(Person rootMom, Person rootDad)
         {
-            RootMale = male;
-            RootFemale = female;
-            familyMembers.Add(RootMale);
-            familyMembers.Add(RootFemale);
+            RootMom = rootMom;
+            RootDad = rootDad;
+            familyMembers.Add(rootMom);
+            familyMembers.Add(rootDad);
+        }
+        public FamilyTree(Person rootMember)
+        {
+            if (rootMember.Gender == Gender.Male)
+            {
+                RootDad = rootMember;
+                familyMembers.Add(rootMember);
+            }
+            else
+            {
+                RootMom = rootMember;
+                familyMembers.Add(rootMember);
+            }
         }
         public void Add(Person descendant)
         {
@@ -33,15 +46,19 @@ namespace Task_2
                 Console.WriteLine("This person is not a descendant of the family tree.");
             }
         }
-        bool IsDescendant(Person descendant)
+        bool IsDescendant(Person? descendant)
         {
-            if (familyMembers.Contains(descendant.ParentMom) || familyMembers.Contains(descendant.ParentDad))
+            if (descendant == null) { 
+                return false; }
+            if (descendant.ParentMom != null)
             {
-                return true;
+                if (familyMembers.Contains(descendant.ParentMom) || IsDescendant(descendant.ParentMom)) { 
+                    return true; }
             }
-            else if (IsDescendant(descendant.ParentDad) || IsDescendant(descendant.ParentMom))
+            if (descendant.ParentDad != null)
             {
-                return true;
+                if (familyMembers.Contains(descendant.ParentDad) || IsDescendant(descendant.ParentDad)) { 
+                    return true; }
             }
             return false;
         }
@@ -75,5 +92,23 @@ namespace Task_2
         {
             return familyMembers.GetEnumerator();
         }
+        public void ShowFamilyTree()
+        {
+            foreach (var member in familyMembers)
+            {
+                Console.WriteLine(member);
+            }
+        }
+        public List<Person> AllDescendantsOf (Person person)
+        {
+            List<Person> descendants = new List<Person>();
+            foreach (var member in person.Children)
+            {
+                    descendants.Add(member);
+                    descendants.AddRange(AllDescendantsOf(member));
+            }
+            return descendants;
+        }
+            
     }
 }
