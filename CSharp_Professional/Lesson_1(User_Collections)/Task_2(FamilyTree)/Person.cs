@@ -9,6 +9,7 @@ namespace Task_2
         Male = 0,
         Female = 1
     }
+    
     public class Person
     {
         public DateTime Birthday { get;  }
@@ -16,44 +17,34 @@ namespace Task_2
         public Gender Gender {
             get; }
         public List <Person> Children { get; } = new List <Person> ();
-        Person? parentMom = null;
-        public Person? ParentMom { get { return parentMom; } }   
-        Person ? parentDad = null;
-        public Person? ParentDad { get { return parentDad; } }
-        public Person (Person Mom, Person Dad, string? name, DateTime birthday, Gender gender)
+        public Person? ParentMom { get; internal set; }   
+        public Person? ParentDad { get; internal set; }
+        public Person(string? name, DateTime birthday, Gender gender)
         {
-            parentMom = Mom;
-            parentMom.Children.Add(this);
-            parentDad = Dad;
-            parentDad.Children.Add(this);
             this.Name = name;
             this.Birthday = birthday;
             this.Gender = gender;
             this.Children = new List<Person>();
         }
-        public Person(Person parent, string? name, DateTime birthday, Gender gender)
+        public Person (Person Mom, Person Dad, string? name, DateTime birthday, Gender gender) : this(name, birthday, gender)
+        {
+            ParentMom = Mom;
+            ParentMom.Children.Add(this);
+            ParentDad = Dad;
+            ParentDad.Children.Add(this);
+        }
+        public Person(Person parent, string? name, DateTime birthday, Gender gender) : this (name, birthday, gender)
         {
             if (parent.Gender == Gender.Male)
             {
-                parentDad = parent;
-                parentDad.Children.Add(this);
+                ParentDad = parent;
+                ParentDad.Children.Add(this);
             }
             else
             {
-                parentMom = parent;
-                parentMom.Children.Add(this);
+                ParentMom = parent;
+                ParentMom.Children.Add(this);
             }
-            this.Name = name;
-            this.Birthday = birthday;
-            this.Gender = gender;
-            this.Children = new List<Person>();
-        }
-        public Person (string? name, DateTime birthday, Gender gender)
-        {
-            this.Name = name;
-            this.Birthday = birthday;
-            this.Gender = gender;
-            this.Children = new List<Person>();
         }
         public Person? this[string name]
         {
@@ -73,7 +64,7 @@ namespace Task_2
         public override string ToString()
         {
             return $"Name: {Name}, Birthday: {Birthday.ToShortDateString()}, Gender: {Gender}" +
-                $"\n\t{ParentDad?.Name}\n\t{ParentMom?.Name}";
+                $"\n\tfather: {ParentDad?.Name}\n\tmother: {ParentMom?.Name}";
         }
     }
 }

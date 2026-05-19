@@ -37,14 +37,7 @@ namespace Task_2
         }
         public void Add(Person descendant)
         {
-            if (IsDescendant(descendant))
-            { 
                 familyMembers.Add(descendant);
-            }
-            else
-            {
-                Console.WriteLine("This person is not a descendant of the family tree.");
-            }
         }
         bool IsDescendant(Person? descendant)
         {
@@ -83,9 +76,20 @@ namespace Task_2
             return familyMembers.GetEnumerator();
         }
 
-        public bool Remove(Person item)
+        public bool Remove(Person person)
         {
-            return familyMembers.Remove(item);
+            foreach (var child in person.Children)
+            {
+                if (child.ParentMom != null && child.ParentMom.Name == person.Name)
+                {
+                    child.ParentMom = null;
+                }
+                else if (child.ParentDad != null && child.ParentDad.Name == person.Name)
+                {
+                    child.ParentDad = null;
+                }
+            }
+            return familyMembers.Remove(person);
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
@@ -104,11 +108,14 @@ namespace Task_2
             List<Person> descendants = new List<Person>();
             foreach (var member in person.Children)
             {
-                    descendants.Add(member);
-                    descendants.AddRange(AllDescendantsOf(member));
+                descendants.AddRange(AllDescendantsOf(member));
+                descendants.Add(member);
             }
             return descendants;
         }
-            
+        public bool IsDescendatOf(Person person1, Person person2)
+        {
+            return AllDescendantsOf(person2).Contains(person1);
+        }
     }
 }
