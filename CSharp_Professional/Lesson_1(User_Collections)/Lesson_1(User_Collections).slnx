@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="Task_1/Task_1.csproj" />
   <Project Path="Task_2(FamilyTree)/Task_2(FamilyTree).csproj" />
+  <Project Path="Task_3(Vocabulary)/Task_3(Vocabulary).csproj" />
+  <Project Path="Task_6/Task_6.csproj" />
 </Solution>
