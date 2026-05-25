@@ -27,7 +27,15 @@ List<Buyer> buyersList = new List<Buyer>{
     NewBuyer("Diana Evans", itemsList),
     NewBuyer("Frank Green", itemsList)
 };
-
+foreach(var buyer in buyersList)
+{
+    Console.WriteLine($"Buyer: {buyer.Name}");
+    foreach (var item in buyer.Items)
+    {
+        Console.WriteLine($"\t{item.Name} ({item.Category})");
+    }
+    Console.WriteLine(new string('-', 40));
+}
 Dictionary<string, HashSet<string>> buyerToCategories = new Dictionary<string, HashSet<string>>();
 foreach(var buyer in buyersList)
 {
@@ -40,11 +48,29 @@ foreach(var buyer in buyersList)
         buyerToCategories[buyer.Name].Add(item.Category);
     }
 }
+
+Random rand = new Random();
+Buyer randomBuyer = buyersList[rand.Next(buyersList.Count)];
+Console.WriteLine($"\n{randomBuyer.Name} made a purchase in the following categories:");
+foreach(var category in buyerToCategories[randomBuyer.Name])
+{
+    Console.WriteLine($"\t{category}");
+}
+
+var buyersOfElectronics = buyerToCategories.Where(kvp => kvp.Value.Contains("Electronics")).Select(kvp => kvp.Key).ToList();
+Console.WriteLine("\nElectronics Buyers:");
+foreach (var buyer in buyersOfElectronics)
+{
+    Console.WriteLine($"\t{buyer}");
+}
+
+
 static Buyer NewBuyer (string name, List<Item> items)
 {
     Buyer buyer = new Buyer(name);
     Random rand = new Random();
-    for (int i = 0; i < rand.Next(1, 20); i++)
+    int itemsCountInPurchase = rand.Next(2, 6);
+    for (int i = 0; i < itemsCountInPurchase; i++)
     {
         int randomIndex = rand.Next(items.Count);
         buyer.AddItem(items[randomIndex]);
