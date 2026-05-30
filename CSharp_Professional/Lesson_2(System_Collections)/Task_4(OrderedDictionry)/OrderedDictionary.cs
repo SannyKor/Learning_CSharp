@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Task_4_OrderedDictionry_
 {
-    public class MyOrderedDictionary<TKey, TValue> : ICollection<KeyValuePair<TKey, TValue>> where TKey : notnull
+    public class MyOrderedDictionary<TKey, TValue> : IEquatable<MyOrderedDictionary<TKey, TValue>>, ICollection<KeyValuePair<TKey, TValue>> where TKey : notnull
     {
         private Dictionary<TKey, TValue> _dictionary = new Dictionary<TKey, TValue>();
         private List <TKey> _order = new List<TKey>();
@@ -95,6 +95,39 @@ namespace Task_4_OrderedDictionry_
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public bool Equals(MyOrderedDictionary<TKey, TValue>? other)
+        {
+            if (ReferenceEquals(this, other))
+            {
+                Console.WriteLine("Колекції рівні за посиланням");
+                return true;
+            }
+            if (other == null)
+            {
+                Console.WriteLine("Колекції не рівні, оскільки інша колекція є null");
+                return false;
+            }
+            if(Count != other.Count)
+            {
+                Console.WriteLine("Колекції не рівні, оскільки вони мають різну кількість елементів");
+                return false;
+            }
+            var enum1 = this.GetEnumerator();
+            var enum2 = other.GetEnumerator();
+            while(enum1.MoveNext() && enum2.MoveNext())
+            {
+                var item1 = enum1.Current;
+                var item2 = enum2.Current;
+                if (!item1.Equals(item2))
+                {
+                    Console.WriteLine("Колекції не рівні, оскільки вони мають різні елементи");
+                    return false;
+                }
+            }
+            Console.WriteLine("Колекції рівні");
+            return true;
         }
     }
 }
