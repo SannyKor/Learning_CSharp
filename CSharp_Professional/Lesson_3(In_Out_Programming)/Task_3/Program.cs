@@ -1,5 +1,7 @@
 ﻿
 
+using System.IO.Compression;
+
 Console.OutputEncoding = System.Text.Encoding.Unicode;
 
 string path = "text.txt";
@@ -17,7 +19,7 @@ Console.WriteLine($"Створено файл: \n\t" +
     $"кореневий каталог: {drive};\n\t" +
     $"розмір файлу: {fileInfo.Length} байт;");
 
-Console.WriteLine($"Робимо пошук файла за ім'ям: {path}");
+Console.WriteLine($"\nРобимо пошук на диску {drive} файла за ім'ям: {path}");
 var searchOptions = new EnumerationOptions
 {
     IgnoreInaccessible = true,
@@ -28,16 +30,13 @@ var searchFiles = Directory.EnumerateFiles(drive ?? @"C:\", path, searchOptions)
 Console.WriteLine($"Знайдені файли:");
 foreach (var sfile in searchFiles)
 {
-    
-    string? sName = Path.GetFileName(sfile);
-    string? sdirectoryName = Path.GetFileName(Path.GetDirectoryName(sfile));
-    Console.WriteLine($"\t{sName} лежить у каталозі ({sdirectoryName});");
+    Console.WriteLine((new FileInfo(sfile).FullName));
 }
-Console.WriteLine($"Тепер шукаємо наш файл за розміром ({fileInfo.Length}):");
+Console.WriteLine($"\nТепер із тих що знайшли відсортовуємо наш файл за розміром ({fileInfo.Length}):");
 var searchFile = searchFiles.FirstOrDefault(f => new FileInfo(f).Length == fileInfo.Length);
+var foundFileInfo = new FileInfo(searchFile ?? string.Empty);
 if (searchFile != null)
 {
-    var foundFileInfo = new FileInfo(searchFile);
     Console.WriteLine($"Знайдено файл: \n\t" +
     $"{foundFileInfo.FullName};\n\t" +
     $"розмір файлу: {foundFileInfo.Length} байт;");
@@ -46,3 +45,17 @@ else
 {
     Console.WriteLine($"Файл не знайдено за розміром.");
 }
+
+Console.WriteLine($"тепер стискаєм файл знайдений файл з розміром {foundFileInfo.Length}:");
+string compressedFilePath = foundFileInfo.FullName + ".gz";
+FileStream sourceStream = new FileStream(foundFileInfo.FullName, FileMode.Open, FileAccess.Read);
+FileStream destinationStream = new FileStream(compressedFilePath, FileMode.Create, FileAccess.Write);
+GZipStream compressor = new GZipStream(destinationStream, CompressionMode.Compress);
+sourceStream.CopyTo(compressor);
+sourceStream.Close();
+compressor.Close();
+destinationStream.Close();
+sourceStream.Close();
+var compressedFileInfo = new FileInfo(compressedFilePath);
+Console.WriteLine($"Розмір стиснутого файлу: {compressedFileInfo.Length} байт;");
+
