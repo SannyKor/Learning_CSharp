@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="TelephoneBook.xml" />
+  </Folder>
+  <Project Path="Task_2/Task_2.csproj" Id="fc7f4a88-efa9-4d78-957e-97c561ae6926" />
+  <Project Path="Task_3/Task_3.csproj" Id="9ddb906d-6146-498f-a0e2-233b3ccd6a50" />
+  <Project Path="Task_4/Task_4.csproj" Id="558f2e1d-5d5d-4ef4-9888-d9797d7f851e" />
+</Solution>
