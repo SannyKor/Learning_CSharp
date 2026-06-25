@@ -1,0 +1,9 @@
+{
+  "Application": {
+    "HeaderText": "Програма користувача",
+    "WindowTitle": "Мій записник",
+    "FontSize": 18,
+    "BackgroundColor": "LightBlue",
+    "TextColor": "Green"
+  }
+}

@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task_4"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="AdminWindow" Height="350" Width="500
+        ">
+    <Grid Margin="10,0,0,15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="141*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="51*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Налаштування зовнішнього вигляду вікна для користувачів:" VerticalAlignment="Center" Height="77" Width="470" FontSize="24" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TitleTextBox" HorizontalAlignment="Left" Margin="4,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="257" Height="22" Grid.Row="1" Grid.Column="1"/>
+        <ComboBox x:Name="BackColorComboBox" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Width="257" Height="22" Grid.Row="4" Grid.Column="1"/>
+        <ComboBox x:Name="FontColorComboBox" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Width="257" Height="22" Grid.Row="5" Grid.Column="1"/>
+        <TextBox x:Name="FontSizeTextBox" HorizontalAlignment="Left" Margin="4,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="257" Height="20" Grid.Row="3" Grid.Column="1"/>
+        <TextBox x:Name="HeaderTextBox" HorizontalAlignment="Left" Margin="4,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="257" Height="20" Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="SettingSaveButton" Content="Зберегти налаштування" HorizontalAlignment="Left" Height="42" Margin="140,37,0,0" VerticalAlignment="Top" Width="210" Grid.Row="6" Grid.ColumnSpan="2" Click="settingSaveButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Назва вікна" VerticalAlignment="Center" Width="177" Height="22" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Колір тексту" VerticalAlignment="Center" Width="177" Height="22" Grid.Row="5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Колір фону" VerticalAlignment="Center" Width="177" Height="22" Grid.Row="4"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Розмір шрифту" VerticalAlignment="Center" Width="177" Height="22" Grid.Row="3"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Назва нотатку" VerticalAlignment="Center" Width="177" Height="22" Grid.Row="2"/>
+
     </Grid>
 </Window>

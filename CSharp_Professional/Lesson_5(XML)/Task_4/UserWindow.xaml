@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task_4"
         mc:Ignorable="d"
-        Title="UserWindow" Height="450" Width="800">
+        Title="Мій записник" Height="450" Width="500">
     <Grid>
-        
+        <TextBlock x:Name="titleTextBlock" HorizontalAlignment="Left" Margin="45,23,0,0" TextWrapping="Wrap" Text="Дуже важлива інформація:" VerticalAlignment="Top" Width="403" Height="28" FontWeight="Bold" FontSize="16" FontStyle="Italic" TextAlignment="Center"/>
+        <TextBox x:Name="infoTextBox" HorizontalAlignment="Left" Margin="45,70,0,0" TextWrapping="Wrap" Text="Почніть запис..." VerticalAlignment="Top" Width="403" Height="258" BorderBrush="#FFB1B1B1" Foreground="#FFB1B1B1" TextChanged="infoTextBox_TextChanged" GotFocus="infoTextBox_GotFocus" LostFocus="infoTextBox_LostFocus"/>
+        <Button x:Name="saveInfoButton" IsDefault="True" Content="Зберегти важливу інформацію" HorizontalAlignment="Left" Margin="45,347,0,0" VerticalAlignment="Top" Width="403" Height="42" FontSize="16" Click="saveInfoButton_Click"/>
+
     </Grid>
 </Window>
