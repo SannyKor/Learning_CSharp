@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MyContacts>
+	<Contact TelephoneNumber="+380501234567">Олександр</Contact>
+	<Contact TelephoneNumber="+380679876543">Марія</Contact>
+	<Contact TelephoneNumber="+380931112233">Дмитро</Contact>
+	<Contact TelephoneNumber="+380631234567">Ірина</Contact>
+	<Contact TelephoneNumber="+380671234567">Сергій</Contact>
+	<Contact TelephoneNumber="+380631112233">Олена</Contact>
+</MyContacts>
