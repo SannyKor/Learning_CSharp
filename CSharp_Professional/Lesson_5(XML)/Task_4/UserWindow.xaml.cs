@@ -23,11 +23,12 @@ namespace Task_4
     public partial class UserWindow : Window
     {
         private readonly string filePath = "user_data.txt";
+        ApplicationSettings settings = new ApplicationSettings();
         public UserWindow()
         {
             InitializeComponent();
             LoadUserData();
-            ApplicationSettings settings = new ApplicationSettings();
+           
             IConfiguration configuration = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
                 .AddJsonFile("settings.json", optional: false)
@@ -74,7 +75,8 @@ namespace Task_4
             if(infoTextBox.Text == "Почніть запис...")
             {
                 infoTextBox.Text = string.Empty;
-                infoTextBox.Foreground = ;
+                infoTextBox.Foreground = new SolidColorBrush((Color)ColorConverter
+                .ConvertFromString(settings.TextColor));
             }
         }
 
