@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="ClassLibrary1/ClassLibrary1.csproj" />
+  <Project Path="MyReflector/MyReflector.csproj" Id="0e47533d-23e9-49c7-899b-2b7ba34b81d3" />
+  <Project Path="Task_2(TemperatureConverterLibrary)/Task_2(TemperatureConverterLibrary).csproj" />
+  <Project Path="Task_3(using reflection from task_2)/Task_3(using reflection from task_2).csproj" />
 </Solution>
