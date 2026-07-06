@@ -3,7 +3,7 @@ using Task_2_XML_Serialization_;
 
 namespace Task_3_XML_Deserialization_
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
