@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Task_2(Parallel_Invoke)/Task_2(Parallel_Invoke).csproj" />
+  <Project Path="Task_4(PLINQ)/Task_4(PLINQ).csproj" Id="cd4c6d5a-9571-4f9d-96ad-3ba3594e9842" />
 </Solution>
