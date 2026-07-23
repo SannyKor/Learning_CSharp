@@ -1,0 +1,47 @@
+﻿<Window x:Class="Task_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Name="tbLog"
+                 Grid.Row="0"
+                 Margin="0,0,0,10"
+                 VerticalScrollBarVisibility="Auto"
+                 TextWrapping="Wrap"
+                 IsReadOnly="True"
+                 AcceptsReturn="True"/>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+
+            <Button Name="btnConnect"
+                    Width="140"
+                    Height="35"
+                    Margin="5"
+                    Click="btnConnect_Click">
+                Підключитися
+            </Button>
+
+            <Button Name="btnDisconnect"
+                    Width="140"
+                    Height="35"
+                    Margin="5"
+                    Click="btnDisconnect_Click">
+                Відключитися
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
