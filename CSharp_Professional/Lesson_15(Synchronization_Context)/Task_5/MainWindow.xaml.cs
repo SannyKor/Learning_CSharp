@@ -34,6 +34,7 @@ namespace Task_5
                         $"До await\n" +
                         $"ThreadId: {Thread.CurrentThread.ManagedThreadId}\n" +
                         $"IsThreadPool: {Thread.CurrentThread.IsThreadPoolThread}");
+                //int result = await Task.Run(() => Addition(5, 10));
                 int result = await Task.Run(() => Addition(5, 10)).ConfigureAwait(false);
                 //Dispatcher.Invoke(() =>
                 //{
