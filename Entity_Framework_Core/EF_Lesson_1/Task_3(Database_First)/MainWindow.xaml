@@ -1,0 +1,27 @@
+﻿<Window x:Class="Task_3_Database_First_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Каталог товарів (WPF)" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Button x:Name="BtnLoadData" 
+                Content="Завантажити товари" 
+                Grid.Row="0" 
+                Height="35" 
+                Width="200" 
+                HorizontalAlignment="Left" 
+                Margin="0,0,0,10" 
+                Click="BtnLoadData_Click"/>
+        
+        <DataGrid x:Name="DgProducts" 
+                  Grid.Row="1" 
+                  AutoGenerateColumns="True" 
+                  IsReadOnly="True" 
+                  CanUserAddRows="False"/>
+
+    </Grid>
+</Window>
