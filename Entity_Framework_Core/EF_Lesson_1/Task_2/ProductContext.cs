@@ -23,9 +23,27 @@ namespace Task_2
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Product>()
-                .HasKey(p => new { p.ProductId, p.ProductAlterId });
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.ToTable("Products");
 
+                entity.HasKey(p => new { p.ProductId, p.ProductAlterId });
+
+                entity.Property(p => p.Name)
+                      .IsRequired()
+                      .HasMaxLength(100);
+
+                entity.Property(p => p.Cost)
+                      .HasColumnType("Money")
+                      .IsRequired();
+
+                entity.Property(p => p.Description)
+                      .HasMaxLength(250)
+                      .IsRequired();
+
+                entity.Property(p => p.Quantity)
+                      .IsRequired();
+            });
             modelBuilder.Ignore<Error>();
         }
     }
