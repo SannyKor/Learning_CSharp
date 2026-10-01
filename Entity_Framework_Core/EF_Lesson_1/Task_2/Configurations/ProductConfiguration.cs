@@ -12,7 +12,7 @@ namespace Task_2.Configurations
         {
             builder.ToTable("Products");
 
-            builder.HasKey(p => new { p.ProductId, p.ProductAlterId });
+            builder.HasKey(p => p.Id);
 
             builder.Property(p => p.Name)
                 .IsRequired()
@@ -36,9 +36,6 @@ namespace Task_2.Configurations
 
             builder.Property(p => p.DescriptionField2)
                 .HasMaxLength(250)
-                .IsRequired();
-
-            builder.Property(p => p.Quantity)
                 .IsRequired();
 
             builder.HasOne(p => p.Category)

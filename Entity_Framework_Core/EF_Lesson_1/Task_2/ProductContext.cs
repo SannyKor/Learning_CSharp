@@ -12,7 +12,7 @@ namespace Task_2
     {
         public ProductContext()
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
@@ -31,6 +31,11 @@ namespace Task_2
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new CartConfiguration());
+            modelBuilder.ApplyConfiguration(new WordConfiguration());
+            modelBuilder.ApplyConfiguration(new KeyParamsConfiguration());
 
             modelBuilder.Ignore<Error>();
 

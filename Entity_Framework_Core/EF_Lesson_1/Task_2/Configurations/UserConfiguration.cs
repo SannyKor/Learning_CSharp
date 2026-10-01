@@ -35,11 +35,6 @@ namespace Task_2.Configurations
             builder.Property(u => u.Password)
                 .IsRequired()
                 .HasMaxLength(255);
-
-            builder.HasMany(u => u.Cart)
-                .WithOne(c => c.User)
-                .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

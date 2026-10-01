@@ -12,6 +12,6 @@ namespace Task_2.Models
         public string Password { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
 
-        public List<Cart> Cart { get; set; } = new List<Cart>();
+        public List<Cart> Carts { get; set; } = new List<Cart>();
     }
 }

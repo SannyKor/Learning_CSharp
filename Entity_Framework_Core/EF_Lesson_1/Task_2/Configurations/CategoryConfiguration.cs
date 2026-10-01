@@ -15,20 +15,15 @@ namespace Task_2.Configurations
 
             builder.HasKey(c => c.Id);
 
-            builder.Property("Name")
+            builder.Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(100);
 
             builder.HasIndex(c => c.Name)
                 .IsUnique();
 
-            builder.Property("Icon")
+            builder.Property(c => c.Icon)
                 .HasMaxLength(100);
-
-            builder.HasMany(c => c.Products)
-                .WithOne(p => p.Category)
-                .HasForeignKey(p => p.CategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
