@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Employee.xml" />
+    <File Path="EmployeeXmlAttribute.xml" />
+  </Folder>
+  <Project Path="Task_2(XML_Serialization)/Task_2(XML_Serialization).csproj" />
+  <Project Path="Task_3(XML_Deserialization)/Task_3(XML_Deserialization).csproj" />
+  <Project Path="Task_5(Json_Serialization)/Task_5(Json_Serialization).csproj" />
+</Solution>
