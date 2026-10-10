@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
+using Task_2.Configurations;
+using Task_2.Models;
 
 namespace Task_2
 {
@@ -10,9 +12,14 @@ namespace Task_2
     {
         public ProductContext()
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Product> Products { get; set; } = null!;
+        public DbSet<Cart> Carts { get; set; } = null!;
+        public DbSet<Word> Words { get; set; } = null!;
+        public DbSet<KeyParams> KeyParams { get; set; } = null!;
         public List<Error> Errors { get; set; } = new List<Error>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,28 +30,16 @@ namespace Task_2
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Product>(entity =>
-            {
-                entity.ToTable("Products");
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new CartConfiguration());
+            modelBuilder.ApplyConfiguration(new WordConfiguration());
+            modelBuilder.ApplyConfiguration(new KeyParamsConfiguration());
 
-                entity.HasKey(p => new { p.ProductId, p.ProductAlterId });
-
-                entity.Property(p => p.Name)
-                      .IsRequired()
-                      .HasMaxLength(100);
-
-                entity.Property(p => p.Cost)
-                      .HasColumnType("Money")
-                      .IsRequired();
-
-                entity.Property(p => p.Description)
-                      .HasMaxLength(250)
-                      .IsRequired();
-
-                entity.Property(p => p.Quantity)
-                      .IsRequired();
-            });
             modelBuilder.Ignore<Error>();
+
+
         }
     }
 }
