@@ -1,0 +1,19 @@
+﻿@model Task_1_Web_Calculator.Models.ClientInfoViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Інформація про клієнта";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Дані про клієнта</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Ваша IP-адреса:</strong> @Model?.IpAddress</p>
+            <p><strong>Ваш браузер (User-Agent):</strong> @Model?.UserAgent</p>
+        </div>
+    </div>
+</div>

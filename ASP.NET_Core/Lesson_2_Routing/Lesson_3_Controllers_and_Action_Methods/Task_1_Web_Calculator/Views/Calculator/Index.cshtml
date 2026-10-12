@@ -1,0 +1,43 @@
+﻿@model Task_1_Web_Calculator.Models.Calculator
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Калькулятор";
+}
+
+<div class="container mt-4" style="max-width: 450px;">
+    <h3 class="mb-3 text-center">Простий калькулятор</h3>
+
+    <form method="post" action="/Calculator/Index">
+        <div class="mb-3">
+            <label class="form-label">Перше число:</label>
+            <input type="number" step="any" name="FirstNumber" value="@Model.FirstNumber" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Друге число:</label>
+            <input type="number" step="any" name="SecondNumber" value="@Model.SecondNumber" class="form-control" required />
+        </div>
+
+        <div class="mb-3 d-flex justify-content-between">
+            <button type="submit" name="Operation" value="+" class="btn btn-primary px-4">+</button>
+            <button type="submit" name="Operation" value="-" class="btn btn-primary px-4">-</button>
+            <button type="submit" name="Operation" value="*" class="btn btn-primary px-4">*</button>
+            <button type="submit" name="Operation" value="/" class="btn btn-primary px-4">/</button>
+        </div>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger mt-3">
+            @Model.ErrorMessage
+        </div>
+    }
+    else if (Model.Result.HasValue)
+    {
+        <div class="alert alert-success mt-3">
+            <strong>Результат:</strong> @Model.Result.Value
+        </div>
+    }
+</div>
