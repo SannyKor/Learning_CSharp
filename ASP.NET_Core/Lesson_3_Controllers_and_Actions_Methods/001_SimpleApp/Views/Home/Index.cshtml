@@ -1,0 +1,15 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<a href="~/Source.jpg" target="_blank" rel="noopener noreferrer">відкрити домашнє завдання</a>
+
+<div class="container mt-4">
+    <h3>Завантаження матеріалів</h3>
+    <p>Натисніть кнопку нижче, щоб отримати файл:</p>
+
+    <a asp-controller="Home" asp-action="Download" class="btn btn-success">
+        Завантажити файл
+    </a>
+</div>
