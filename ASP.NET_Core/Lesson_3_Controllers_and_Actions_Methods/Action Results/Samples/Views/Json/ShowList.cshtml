@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Clients List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <button id="loadBtn">Завантажити список клієнтів</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Login</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="clientsTableBody">
+            <!-- Сюди динамічно додаються рядки з клієнтами -->
+        </tbody>
+    </table>
+
+    <script>
+        const btn = document.querySelector("#loadBtn");
+        const tableBody = document.querySelector("#clientsTableBody");
+
+        btn.addEventListener("click", () => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "/json/clientslist");
+
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    const clients = JSON.parse(xhr.response);
+                    
+                    // Очищуємо попередній вміст перед новим рендером
+                    tableBody.innerHTML = "";
+
+                    // Проходимось по кожному елементу масиву
+                    clients.forEach(client => {
+                        const tr = document.createElement("tr");
+
+                        // У .NET властивості за замовчуванням серіалізуються в camelCase (id, login, email)
+                        tr.innerHTML = `
+                            <td>${client.id}</td>
+                            <td>${client.login}</td>
+                            <td>${client.email}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                }
+            };
+
+            xhr.send();
+        });
+    </script>
+</body>
+</html>

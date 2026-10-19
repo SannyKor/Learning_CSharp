@@ -1,0 +1,64 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Головна сторінка";
+}
+
+<div class="text-center my-4">
+    <h1 class="display-5">Керування товарами</h1>
+    <p class="lead text-muted">
+        Оберіть спосіб передачі та відображення даних моделі з контролера до подання.
+    </p>
+</div>
+
+<div class="row justify-content-center g-4 mt-2">
+    <!-- Варіант 1: Строго типізоване подання -->
+    <div class="col-md-5">
+        <div class="card h-100 shadow-sm border-primary">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-primary">Спосіб 1: Строга типізація</h5>
+                <p class="card-text text-secondary flex-grow-1">
+                    Передача колекції об'єктів безпосередньо через метод <code>View(model)</code> із вказівкою директиви <code>@@model</code>.
+                </p>
+                <a asp-controller="Product"
+                   asp-action="Index"
+                   class="btn btn-primary w-100 mt-3">
+                    Відкрити (Strongly Typed)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Варіант 2: Передача через ViewBag -->
+    <div class="col-md-5">
+        <div class="card h-100 shadow-sm border-secondary">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-dark">Спосіб 2: Dynamic (ViewBag)</h5>
+                <p class="card-text text-secondary flex-grow-1">
+                    Передача даних за допомогою динамічної властивості <code>ViewBag.ProductsList</code> без жорсткої прив'язки до типу на етапі компіляції.
+                </p>
+                <a asp-controller="Product"
+                   asp-action="IndexWithViewBag"
+                   class="btn btn-outline-secondary w-100 mt-3">
+                    Відкрити (через ViewBag)
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Блок: Висновки та аналіз -->
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-success">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-success">Висновки та аналіз</h5>
+                <p class="card-text text-secondary flex-grow-1">
+                    Детальний розбір складнощів реалізації, порівняльна таблиця та підсумки виконання завдання.
+                </p>
+                <a asp-controller="Home"
+                   asp-action="Conclusion"
+                   class="btn btn-outline-success w-100 mt-3">
+                    Читати висновок
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

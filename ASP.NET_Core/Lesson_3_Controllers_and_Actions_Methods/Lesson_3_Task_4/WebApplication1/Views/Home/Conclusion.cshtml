@@ -1,0 +1,70 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Висновки щодо способів передачі даних";
+}
+
+<div class="container my-4">
+    <div class="mb-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+            &larr; На головну
+        </a>
+    </div>
+
+    <h1 class="display-6 mb-3">Порівняльний аналіз: Strongly Typed View vs ViewBag</h1>
+    <p class="lead text-muted">
+        Висновки та підсумки щодо реалізації передачі даних між контролером та представленням.
+    </p>
+
+    <div class="table-responsive my-4">
+        <table class="table table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th style="width: 20%;">Критерій</th>
+                    <th style="width: 40%;">Строго типізоване подання (@Model)</th>
+                    <th style="width: 40%;">ViewBag (Dynamic)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Перевірка типів</strong></td>
+                    <td class="table-success">Під час компіляції (Compile-time). Помилки виявляються одразу в IDE.</td>
+                    <td class="table-danger">Під час виконання (Runtime). Помилка в назві поля призводить до збою у браузері.</td>
+                </tr>
+                <tr>
+                    <td><strong>IntelliSense</strong></td>
+                    <td class="table-success">Повна автопідстановка властивостей і методів моделі.</td>
+                    <td class="table-warning">Відсутня або вимагає явного кастингу типу <code>(List&lt;Product&gt;)ViewBag...</code>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Рефакторинг</strong></td>
+                    <td class="table-success">Автоматичний: перейменування властивості оновлює її у поданні.</td>
+                    <td class="table-danger">Ручний: інструменти IDE не бачать звернень через динамічні властивості.</td>
+                </tr>
+                <tr>
+                    <td><strong>Продуктивність</strong></td>
+                    <td class="table-success">Пряме звернення до властивостей без оверхеду на Dynamic Language Runtime (DLR).</td>
+                    <td class="table-warning">Невеликі накладні витрати через динамічне зв'язування типів під час виконання.</td>
+                </tr>
+                <tr>
+                    <td><strong>Основне призначення</strong></td>
+                    <td>Головні бізнес-дані форми, списки, деталі сутностей.</td>
+                    <td>Дрібні допоміжні дані (заголовки сторінок, повідомлення про статус, метадані).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card bg-light border-0 p-4 mt-3">
+        <h4>Підсумок</h4>
+        <p class="mb-0">
+            Для відображення списків сутностей або роботи з бізнес-моделями у промисловій розробці стандартом є
+            <strong>строго типізовані подання</strong>. Вони усувають ризик прихованих помилок і спрощують підтримку коду.
+            Використання <code>ViewBag</code> доцільне виключно для разової передачі простих службових значень, які не є частиною основної моделі даних.
+        </p>
+    </div>
+</div>
+<div class="mt-4">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">
+        &larr; На головну
+    </a>
+</div>
