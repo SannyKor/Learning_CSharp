@@ -1,0 +1,29 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <!-- Ліва колонка: Додаткове бічне меню -->
+    <div class="col-md-3">
+        <div class="list-group">
+            <a asp-controller="Home" asp-action="SubPage1" 
+               class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Action"]?.ToString() == "SubPage1" ? "active" : "")">
+                Меню 1
+            </a>
+            <a asp-controller="Home" asp-action="SubPage2" 
+               class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Action"]?.ToString() == "SubPage2" ? "active" : "")">
+                Меню 2
+            </a>
+            <a asp-controller="Home" asp-action="SubPage3" 
+               class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Action"]?.ToString() == "SubPage3" ? "active" : "")">
+                Меню 3
+            </a>
+        </div>
+    </div>
+
+    <!-- Права колонка: контент обраного підпункту -->
+    <div class="col-md-9">
+        @RenderBody()
+    </div>
+</div>
