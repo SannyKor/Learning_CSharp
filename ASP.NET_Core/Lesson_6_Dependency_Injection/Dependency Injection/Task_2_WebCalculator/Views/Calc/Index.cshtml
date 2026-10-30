@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Калькулятор";
+}
+
+<h2>Арифметичні операції</h2>
+
+<form method="get">
+    <div class="mb-3">
+        <label class="form-label">Число A:</label>
+        <input type="number" step="any" name="a" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Число B:</label>
+        <input type="number" step="any" name="b" class="form-control" required />
+    </div>
+
+    <div class="btn-group">
+        <button type="submit" formaction="/Calc/Add" class="btn btn-primary">+</button>
+        <button type="submit" formaction="/Calc/Subtract" class="btn btn-secondary">-</button>
+        <button type="submit" formaction="/Calc/Multiply" class="btn btn-success">*</button>
+        <button type="submit" formaction="/Calc/Divide" class="btn btn-danger">/</button>
+    </div>
+</form>

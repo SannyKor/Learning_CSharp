@@ -1,0 +1,14 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewData["Title"] = "Список значень";
+}
+
+<h2>Отримані дані:</h2>
+
+<ul class="list-group">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">@item</li>
+    }
+</ul>
